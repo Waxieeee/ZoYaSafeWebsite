@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZoyaSafe | The Walled-Garden Video App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Quicksand', 'sans-serif'] },
+                    colors: {
+                        'soft-blue': '#8BC6EC',
+                        'soft-purple': '#9599E2',
+                        'sunny-yellow': '#FFE53B',
+                        'warm-orange': '#FF2525',
+                        'mint-green': '#A8E063',
+                    },
+                    boxShadow: {
+                        'chunky': '0 8px 0 rgba(0, 0, 0, 0.1)',
+                        'chunky-hover': '0 4px 0 rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            overflow-x: hidden;
+            background-color: #F8FAFC;
+        }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Custom Shapes & Animations */
+        .blob-shape { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        
+        .float-slow { animation: float 6s ease-in-out infinite; }
+        .float-fast { animation: float 4s ease-in-out infinite reverse; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* CSS Parallax Backgrounds */
+        .parallax-section {
+            background-image: radial-gradient(#9599E2 2px, transparent 2px), radial-gradient(#9599E2 2px, transparent 2px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            background-attachment: fixed;
+            background-color: #F8FAFC;
+        }
+
+        .parallax-hero {
+            background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+            background-attachment: fixed;
+        }
+
+        /* Hide scrollbar for the mocked app feed */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navbar (Simplified, No Logins) -->
+    <nav class="absolute top-0 w-full z-50 px-6 py-6 flex justify-center">
+        <div class="bg-white/90 backdrop-blur-md px-8 py-3 rounded-full shadow-sm border-2 border-white flex items-center gap-3">
+            <div class="w-8 h-8 bg-sunny-yellow rounded-full flex items-center justify-center text-xl shadow-inner">✨</div>
+            <span class="text-2xl font-bold tracking-wide text-soft-purple">ZoyaSafe</span>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO (Fixed Background Parallax) -->
+    <section class="parallax-hero min-h-screen relative flex items-center pt-24 pb-12 px-6 overflow-hidden">
+        <!-- Floating Background Elements -->
+        <div class="absolute top-32 left-10 w-24 h-24 bg-white/30 rounded-full blur-sm float-slow"></div>
+        <div class="absolute bottom-32 right-20 w-40 h-40 bg-sunny-yellow/40 blob-shape float-fast"></div>
+
+        <div class="container mx-auto max-w-6xl flex flex-col lg:flex-row items-center gap-16 relative z-10">
+            
+            <!-- Hero Text -->
+            <div class="lg:w-1/2 text-center lg:text-left text-white">
+                <div class="inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-bold mb-6 border border-white/40 shadow-sm backdrop-blur-sm">
+                    🌷 A Walled-Garden App
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6 drop-shadow-md">
+                    Safe watching. <br>
+                    <span class="text-sunny-yellow">Happy kids.</span>
+                </h1>
+                <p class="text-xl lg:text-2xl text-white/90 font-medium mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    No algorithms. No endless scrolling. Just the specific YouTube channels you approve, perfectly wrapped in a kid-friendly app.
+                </p>
+                <div class="flex items-center justify-center lg:justify-start gap-4">
+                    <span class="bg-white text-soft-purple px-8 py-4 rounded-full font-bold text-lg shadow-chunky border-2 border-transparent transition-transform hover:translate-y-1 hover:shadow-chunky-hover cursor-default">
+                        📱 Coming to iOS & Android
+                    </span>
+                </div>
+            </div>
+
+            <!-- Funky Phone Mockup -->
+            <div class="lg:w-1/2 flex justify-center float-slow">
+                <div class="relative w-[320px] h-[650px] bg-white rounded-[3rem] shadow-2xl border-[12px] border-slate-900 overflow-hidden flex flex-col">
+                    <!-- App Header -->
+                    <div class="bg-soft-blue p-6 pt-12 pb-6 rounded-b-3xl shadow-sm z-10 flex justify-between items-center relative">
+                        <span class="text-white font-bold text-2xl tracking-wide">ZoyaSafe</span>
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-inner text-xl">🧸</div>
+                    </div>
+                    
+                    <!-- App Feed -->
+                    <div class="flex-1 bg-slate-50 p-5 overflow-y-auto no-scrollbar pb-24 relative">
+                        <div class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-wider">Your Approved Channels</div>
+                        
+                        <!-- Chunky Video Card 1 -->
+                        <div class="bg-white rounded-3xl p-3 shadow-sm border-2 border-slate-100 mb-5">
+                            <div class="h-36 bg-mint-green rounded-2xl mb-3 flex items-center justify-center relative overflow-hidden">
+                                <span class="text-5xl z-10">🎨</span>
+                                <div class="absolute inset-0 bg-white/20 w-1/2 h-full skew-x-12 transform -translate-x-10"></div>
+                            </div>
+                            <div class="h-4 w-3/4 bg-slate-200 rounded-full mb-2"></div>
+                            <div class="h-3 w-1/2 bg-slate-100 rounded-full"></div>
+                        </div>
+
+                        <!-- Chunky Video Card 2 -->
+                        <div class="bg-white rounded-3xl p-3 shadow-sm border-2 border-slate-100 mb-5">
+                            <div class="h-36 bg-sunny-yellow rounded-2xl mb-3 flex items-center justify-center">
+                                <span class="text-5xl">🦕</span>
+                            </div>
+                            <div class="h-4 w-2/3 bg-slate-200 rounded-full mb-2"></div>
+                            <div class="h-3 w-1/3 bg-slate-100 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- App Bottom Nav -->
+                    <div class="absolute bottom-0 w-full bg-white border-t-2 border-slate-100 p-6 flex justify-around text-2xl rounded-t-3xl shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+                        <div class="text-soft-purple scale-110 transition-transform">🏠</div>
+                        <div class="text-slate-300 grayscale opacity-50">🔍</div>
+                        <div class="text-slate-300 grayscale opacity-50">⚙️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wavy Divider -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0 text-[#F8FAFC]">
+            <svg class="block w-full h-16 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,123.6,192.2,109.2,236.4,99.1,280.59,79.5,321.39,56.44Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE IDEA (Scrolling Dot Parallax) -->
+    <section class="parallax-section py-24 px-6 relative">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-8">
+                The internet is a wild place. <br>
+                <span class="text-soft-purple">Let's build a safe garden.</span>
+            </h2>
+            <p class="text-xl text-slate-600 font-medium leading-relaxed mb-16">
+                Kids shouldn't be surfing the vast ocean of YouTube alone. With ZoyaSafe, you don't just put on a filter—you handpick the exact creators and channels they are allowed to see. If it's not on your list, it doesn't exist in the app.
+            </p>
+
+            <!-- Funky Feature Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-mint-green shadow-chunky transform transition hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-mint-green/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">✅</div>
+                    <h3 class="text-xl font-bold mb-3">Whitelist Only</h3>
+                    <p class="text-slate-500 font-medium">Add specific channels. Everything else is completely blocked. Total control.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-sunny-yellow shadow-chunky transform transition hover:-translate-y-2 md:-mt-8">
+                    <div class="w-16 h-16 bg-sunny-yellow/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🚫</div>
+                    <h3 class="text-xl font-bold mb-3">No Rabbit Holes</h3>
+                    <p class="text-slate-500 font-medium">No "Up Next" algorithms dragging them into weird internet corners.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-[2rem] p-8 border-4 border-soft-blue shadow-chunky transform transition hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-soft-blue/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🎈</div>
+                    <h3 class="text-xl font-bold mb-3">Kid-Friendly UI</h3>
+                    <p class="text-slate-500 font-medium">Chunky, colorful, and easy for little fingers to navigate safely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SIMPLE FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t-8 border-soft-purple relative overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-64 h-64 bg-soft-purple rounded-full mix-blend-overlay opacity-20 filter blur-3xl"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-2xl font-bold text-white mb-4 tracking-wide">ZoyaSafe</div>
+            <p class="font-medium text-slate-500">Screen time you don't have to stress about.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
